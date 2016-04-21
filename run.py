@@ -4,6 +4,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
+import tornado.wsgi
 
 from tornado.options import define, options
 define("port", default=8000, help="run on the given port", type=int)
@@ -24,7 +25,8 @@ class FormPageHandler(tornado.web.RequestHandler):
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
-    app = tornado.web.Application(
+    # wsgi.WSGIApplication
+    app = tornado.wsgi.WSGIApplication(
         handlers=[(r'/', IndexHandler), (r'/poem', FormPageHandler),
 (r"/gateway", tornado.web.RedirectHandler,
                    dict(url="https://gateway/index.php")),
