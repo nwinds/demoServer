@@ -102,6 +102,20 @@ class GatewayHandler(tornado.web.RequestHandler):
 
 class ParsegwHandler(tornado.web.RequestHandler):
     """ Parse request from gateway """
+    pass
+
+class StoryHandler(tornado.web.RequestHandler):
+    def get(self):
+        cid = self.get_argument('cid')
+        eid = self.get_argument('eid')
+        url = self.get_argument('url')
+        items = [cid, eid, url]
+        self.write('debug: ')
+        for item in items:
+            self.write(item)
+        print('')
+        self.render("template.html", title="login args", items=items)
+
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
@@ -118,6 +132,7 @@ if __name__ == '__main__':
                   (r'/login', LoginHandler),
                   (r'/poem', FormPageHandler),
                   (r'/gateway', GatewayHandler),
+                  (r"/dummyLogin?", StoryHandler),
                   # (r"/gateway", tornado.web.RedirectHandler,
                     # dict(url="https://gateway/index.php")),
                   ],
