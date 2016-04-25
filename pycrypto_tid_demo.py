@@ -19,18 +19,3 @@ secret = bytes(authKey).encode('utf-8')
 
 print b2a_hex(base64.b64encode(hmac(secret, message)))
 
-# from hashlib import sha256
-# import binascii
-# import hmac
-# import base64
-
-
-
-
-# tid = hmac.new(secret, message, digestmod=sha256).digest()
-# hextid = hmac.new(secret, message, digestmod=sha256).hexdigest()
-
-# print(hextid)
-
-# signature = binascii.b2a_hex(base64.b64encode(hmac.new(secret, message, digestmod=sha256).digest()))
-# print(signature)
