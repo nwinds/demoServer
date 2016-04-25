@@ -68,7 +68,7 @@ class FormPageHandler(tornado.web.RequestHandler):
         self.redirect('gateway', permanent=True)# TODO handle url
         # self.render('form.html', roads=gwurl, wood=noun2, made=verb,
                 # difference=noun3)
-# tornado.web.RedirectHandler
+
 class GatewayHandler(tornado.web.RequestHandler):
     """
         HTTP/1.1 302 Found
@@ -100,6 +100,8 @@ class GatewayHandler(tornado.web.RequestHandler):
         url = '%s?%s' % (path, urllib.urlencode(parses))
         self.redirect(url)
 
+class ParsegwHandler(tornado.web.RequestHandler):
+    """ Parse request from gateway """
 
 if __name__ == '__main__':
     tornado.options.parse_command_line()
